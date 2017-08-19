@@ -1,0 +1,26 @@
+platform :ios, '9.0'
+
+target 'TPL-Sales' do
+  use_frameworks!
+
+  # Pods for Charts
+  pod ‘Charts’
+  pod ‘ChartsRealm’
+
+  # Pod for showing spinners
+  pod 'MBProgressHUD', '~> 1.0.0'
+
+  # Pod for showing calendar
+  pod 'FSCalendar'
+
+  target 'TPL-SalesTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TPL-SalesUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mwk-FG-3E3">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TPL_Sales" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeS-fv-v9M" userLabel="ProfilePane">
+                                <rect key="frame" x="0.0" y="64" width="240" height="960"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="NQJ-mV-YEE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAq-yB-mwi" userLabel="GraphPane" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="240" y="64" width="528" height="480"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-l6-9gq" userLabel="ApointmentsPane" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="240" y="544" width="528" height="480"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FoU-l6-9gq" firstAttribute="width" secondItem="aAq-yB-mwi" secondAttribute="width" id="0sO-NH-XYe"/>
+                            <constraint firstItem="aAq-yB-mwi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="600-El-vxj"/>
+                            <constraint firstItem="FoU-l6-9gq" firstAttribute="leading" secondItem="BeS-fv-v9M" secondAttribute="trailing" id="7jM-h1-2Cs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FoU-l6-9gq" secondAttribute="bottom" id="AMR-hO-SKy"/>
+                            <constraint firstItem="BeS-fv-v9M" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JGA-bH-kDu"/>
+                            <constraint firstAttribute="trailing" secondItem="aAq-yB-mwi" secondAttribute="trailing" id="Pob-7c-SJ9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BeS-fv-v9M" secondAttribute="bottom" id="QZm-iU-zHL"/>
+                            <constraint firstItem="FoU-l6-9gq" firstAttribute="top" secondItem="aAq-yB-mwi" secondAttribute="bottom" id="Xby-76-Qep"/>
+                            <constraint firstItem="BeS-fv-v9M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bqe-ld-wLo"/>
+                            <constraint firstItem="FoU-l6-9gq" firstAttribute="height" secondItem="aAq-yB-mwi" secondAttribute="height" id="ddJ-Oc-xS3"/>
+                            <constraint firstItem="aAq-yB-mwi" firstAttribute="leading" secondItem="BeS-fv-v9M" secondAttribute="trailing" id="kTB-wR-VRy"/>
+                            <constraint firstAttribute="trailing" secondItem="FoU-l6-9gq" secondAttribute="trailing" id="v5k-6h-bL0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ybH-P2-8Ls">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="T9c-xj-r3c"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="lineChart" destination="FoU-l6-9gq" id="aJT-hy-c9d"/>
+                        <outlet property="pieChart" destination="aAq-yB-mwi" id="lx2-D1-iHY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="689.84375" y="772.8515625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yb1-6O-y0E">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mwk-FG-3E3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VrK-J3-emz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XPt-uc-A5b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FjB-F3-xFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-86.71875" y="772.8515625"/>
+        </scene>
+    </scenes>
+</document>
