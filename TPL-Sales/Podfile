@@ -13,6 +13,9 @@ target 'TPL-Sales' do
   # Pod for showing calendar
   pod 'FSCalendar'
 
+  # Pod for side menu
+  pod 'SideMenuController'
+
   target 'TPL-SalesTests' do
     inherit! :search_paths
     # Pods for testing

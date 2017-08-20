@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,44 +22,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeS-fv-v9M" userLabel="ProfilePane">
-                                <rect key="frame" x="0.0" y="64" width="240" height="960"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ytg-RQ-Y3g">
+                                <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84B-Bj-l0B">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="600"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeS-fv-v9M" userLabel="ProfilePane">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="ugI-ic-KQQ"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yV8-pd-CaM">
+                                                <rect key="frame" x="200" y="0.0" width="568" height="600"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-es-yqg" userLabel="pieChart" customClass="PieChartView" customModule="Charts">
+                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="600"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhv-yd-Gmg" userLabel="lineChart" customClass="LineChartView" customModule="Charts">
+                                                        <rect key="frame" x="284" y="0.0" width="284" height="600"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="xhv-yd-Gmg" firstAttribute="height" secondItem="4fD-es-yqg" secondAttribute="height" id="Uww-cr-XBT"/>
+                                                    <constraint firstItem="xhv-yd-Gmg" firstAttribute="width" secondItem="4fD-es-yqg" secondAttribute="width" id="s01-rY-vXQ"/>
+                                                </constraints>
+                                                <variation key="widthClass=compact" axis="vertical"/>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="BeS-fv-v9M" firstAttribute="height" secondItem="yV8-pd-CaM" secondAttribute="height" id="Yik-XN-bxG"/>
+                                        </constraints>
+                                        <variation key="widthClass=compact" axis="horizontal"/>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-8y-DLQ" userLabel="appointmentView">
+                                        <rect key="frame" x="0.0" y="600" width="768" height="360"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="NQJ-mV-YEE"/>
+                                    <constraint firstItem="S6d-8y-DLQ" firstAttribute="height" secondItem="84B-Bj-l0B" secondAttribute="height" multiplier="0.6" id="RUl-FU-vfa"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAq-yB-mwi" userLabel="GraphPane" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="240" y="64" width="528" height="480"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-l6-9gq" userLabel="ApointmentsPane" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="240" y="544" width="528" height="480"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FoU-l6-9gq" firstAttribute="width" secondItem="aAq-yB-mwi" secondAttribute="width" id="0sO-NH-XYe"/>
-                            <constraint firstItem="aAq-yB-mwi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="600-El-vxj"/>
-                            <constraint firstItem="FoU-l6-9gq" firstAttribute="leading" secondItem="BeS-fv-v9M" secondAttribute="trailing" id="7jM-h1-2Cs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FoU-l6-9gq" secondAttribute="bottom" id="AMR-hO-SKy"/>
-                            <constraint firstItem="BeS-fv-v9M" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JGA-bH-kDu"/>
-                            <constraint firstAttribute="trailing" secondItem="aAq-yB-mwi" secondAttribute="trailing" id="Pob-7c-SJ9"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BeS-fv-v9M" secondAttribute="bottom" id="QZm-iU-zHL"/>
-                            <constraint firstItem="FoU-l6-9gq" firstAttribute="top" secondItem="aAq-yB-mwi" secondAttribute="bottom" id="Xby-76-Qep"/>
-                            <constraint firstItem="BeS-fv-v9M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bqe-ld-wLo"/>
-                            <constraint firstItem="FoU-l6-9gq" firstAttribute="height" secondItem="aAq-yB-mwi" secondAttribute="height" id="ddJ-Oc-xS3"/>
-                            <constraint firstItem="aAq-yB-mwi" firstAttribute="leading" secondItem="BeS-fv-v9M" secondAttribute="trailing" id="kTB-wR-VRy"/>
-                            <constraint firstAttribute="trailing" secondItem="FoU-l6-9gq" secondAttribute="trailing" id="v5k-6h-bL0"/>
+                            <constraint firstItem="Ytg-RQ-Y3g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2TF-jW-n5V"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ytg-RQ-Y3g" secondAttribute="bottom" id="Fxm-6o-og1"/>
+                            <constraint firstAttribute="trailing" secondItem="Ytg-RQ-Y3g" secondAttribute="trailing" id="H24-4x-2Fr"/>
+                            <constraint firstItem="Ytg-RQ-Y3g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="knG-YX-5or"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ybH-P2-8Ls">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="T9c-xj-r3c"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="lineChart" destination="FoU-l6-9gq" id="aJT-hy-c9d"/>
-                        <outlet property="pieChart" destination="aAq-yB-mwi" id="lx2-D1-iHY"/>
+                        <outlet property="lineChart" destination="xhv-yd-Gmg" id="hEX-O8-YMd"/>
+                        <outlet property="pieChart" destination="4fD-es-yqg" id="qc7-dc-LZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

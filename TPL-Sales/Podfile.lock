@@ -12,12 +12,14 @@ PODS:
   - Realm/Headers (2.9.1)
   - RealmSwift (2.9.1):
     - Realm (= 2.9.1)
+  - SideMenuController (0.2.4)
 
 DEPENDENCIES:
   - Charts
   - ChartsRealm
   - FSCalendar
   - MBProgressHUD (~> 1.0.0)
+  - SideMenuController
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
@@ -26,7 +28,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
   RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
+  SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
 
-PODFILE CHECKSUM: f8d2a1fcd25be45d96e012d525c751c8369377fc
+PODFILE CHECKSUM: 878209c89fce138e587e7173c3bff982e9f7a98e
 
 COCOAPODS: 1.3.1
