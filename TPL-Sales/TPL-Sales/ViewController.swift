@@ -15,6 +15,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var lineChart: LineChartView!
+    @IBOutlet weak var shortName: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var birthday: UILabel!
+    @IBOutlet weak var age: UILabel!
+    @IBOutlet weak var allTimeSales: UILabel!
+    @IBOutlet weak var salesYTD: UILabel!
+    @IBOutlet weak var aboutMe: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +48,8 @@ class ViewController: UIViewController {
         
         setPieChart(dataPoints: months, values: unitsSold)
         setLineChart(dataPoints: months, values: unitsSold)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

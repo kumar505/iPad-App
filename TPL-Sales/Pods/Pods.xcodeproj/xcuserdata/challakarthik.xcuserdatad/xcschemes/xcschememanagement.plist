@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SideMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -62,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>638D99C7FC9F72C5AE83C482F02B083F</key>
+		<key>683FA93B40B2E388EB44CBEFF725ED29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>683FA93B40B2E388EB44CBEFF725ED29</key>
+		<key>69D254C6D5229E4569171112F49366D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -88,6 +93,11 @@
 			<true/>
 		</dict>
 		<key>C5A2DB7A84B7B78E359870D2E1B24AA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC2EFAF31E95852319D475875B52E097</key>
 		<dict>
 			<key>primary</key>
 			<true/>

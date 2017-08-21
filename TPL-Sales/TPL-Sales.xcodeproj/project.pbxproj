@@ -18,6 +18,7 @@
 		9E68D79C1F47202100C9BDC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E68D79A1F47202100C9BDC2 /* LaunchScreen.storyboard */; };
 		9E68D7A71F47202100C9BDC2 /* TPL_SalesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E68D7A61F47202100C9BDC2 /* TPL_SalesTests.swift */; };
 		9E68D7B21F47202100C9BDC2 /* TPL_SalesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E68D7B11F47202100C9BDC2 /* TPL_SalesUITests.swift */; };
+		9ED827401F4B5A000081043F /* Avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8273F1F4B5A000081043F /* Avatar1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		9E68D7AD1F47202100C9BDC2 /* TPL-SalesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TPL-SalesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E68D7B11F47202100C9BDC2 /* TPL_SalesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPL_SalesUITests.swift; sourceTree = "<group>"; };
 		9E68D7B31F47202100C9BDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ED8273F1F4B5A000081043F /* Avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar1.png; sourceTree = "<group>"; };
 		B1FEE3639B1CE806D4195531 /* Pods_TPL_Sales.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPL_Sales.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9721F840B1E123E64B65E72 /* Pods_TPL_SalesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPL_SalesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3A11A721D10A3499C104C8 /* Pods-TPL-Sales.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-Sales.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-Sales/Pods-TPL-Sales.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		9E68D7821F47202100C9BDC2 = {
 			isa = PBXGroup;
 			children = (
+				9ED8273E1F4B59510081043F /* Images */,
 				9E68D78D1F47202100C9BDC2 /* TPL-Sales */,
 				9E68D7A51F47202100C9BDC2 /* TPL-SalesTests */,
 				9E68D7B01F47202100C9BDC2 /* TPL-SalesUITests */,
@@ -166,6 +169,14 @@
 				9E68D7B31F47202100C9BDC2 /* Info.plist */,
 			);
 			path = "TPL-SalesUITests";
+			sourceTree = "<group>";
+		};
+		9ED8273E1F4B59510081043F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9ED8273F1F4B5A000081043F /* Avatar1.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +296,7 @@
 			files = (
 				9E68D79C1F47202100C9BDC2 /* LaunchScreen.storyboard in Resources */,
 				9E68D7991F47202100C9BDC2 /* Assets.xcassets in Resources */,
+				9ED827401F4B5A000081043F /* Avatar1.png in Resources */,
 				9E68D7941F47202100C9BDC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
