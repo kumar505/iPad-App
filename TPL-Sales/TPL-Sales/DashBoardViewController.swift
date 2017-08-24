@@ -1,52 +1,46 @@
 //
-//  ViewController.swift
+//  DashBoardViewController.swift
 //  TPL-Sales
 //
-//  Created by Challa Karthik on 18/08/17.
+//  Created by Challa Karthik on 24/08/17.
 //
 //
 
 import UIKit
 import Charts
 
-class ViewController: UIViewController {
+class DashBoardViewController: UIViewController {
     
-    // MARK: Outlets
-    
-    @IBOutlet weak var pieChart: PieChartView!
-    @IBOutlet weak var lineChart: LineChartView!
-    @IBOutlet weak var shortName: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var fullName: UILabel!
-    @IBOutlet weak var birthday: UILabel!
-    @IBOutlet weak var age: UILabel!
-    @IBOutlet weak var allTimeSales: UILabel!
-    @IBOutlet weak var salesYTD: UILabel!
-    @IBOutlet weak var aboutMe: UILabel!
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var calendarView: UIView!
+    @IBOutlet weak var appointmentsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 12.0, 2.0, 5.0, 14.0, 2.8, 4.2]
         
-        pieChart.centerText = "Sales"
-        pieChart.chartDescription?.position = CGPoint(x: pieChart.frame.size.width/2, y: 5)
-        pieChart.chartDescription?.textAlign = .justified
-        pieChart.drawEntryLabelsEnabled = false
+        let pieLabels = ["Jan", "Feb", "Mar", "Apr"]
+        let pieData = [20.0, 4.0, 6.0, 3.0]
         
-        lineChart.leftAxis.drawGridLinesEnabled = false
-        lineChart.rightAxis.enabled = false
-        lineChart.xAxis.drawGridLinesEnabled = false
-        lineChart.xAxis.labelPosition = .bottom
-        lineChart.xAxis.labelCount = months.count
-        lineChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
-        lineChart.xAxis.granularity = 1.0
-        lineChart.chartDescription?.position = CGPoint(x: lineChart.frame.size.width/2, y: 5)
-        lineChart.chartDescription?.textAlign = .center
+        pieChartView.centerText = "Sales"
+        pieChartView.chartDescription?.position = CGPoint(x: pieChartView.frame.size.width/2, y: 5)
+        pieChartView.chartDescription?.textAlign = .justified
+        pieChartView.drawEntryLabelsEnabled = false
         
-        setPieChart(dataPoints: months, values: unitsSold)
+        lineChartView.leftAxis.drawGridLinesEnabled = false
+        lineChartView.rightAxis.enabled = false
+        lineChartView.xAxis.drawGridLinesEnabled = false
+        lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.xAxis.labelCount = months.count
+        lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
+        lineChartView.xAxis.granularity = 1.0
+        lineChartView.chartDescription?.position = CGPoint(x: lineChartView.frame.size.width/2, y: 5)
+        lineChartView.chartDescription?.textAlign = .center
+        
+        setPieChart(dataPoints: pieLabels, values: pieData)
         setLineChart(dataPoints: months, values: unitsSold)
         
         
@@ -54,8 +48,8 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        pieChart.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
-        lineChart.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
+        pieChartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
+        lineChartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
     }
     
     func setLineChart(dataPoints: [String], values: [Double]) {
@@ -69,10 +63,10 @@ class ViewController: UIViewController {
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "Units Sold")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        lineChart.data = lineChartData
+        lineChartView.data = lineChartData
         
-        lineChart.chartDescription?.text = "Line Chart Demo"
-        lineChart.gridBackgroundColor = .clear
+        lineChartView.chartDescription?.text = "Line Chart Demo"
+        lineChartView.gridBackgroundColor = .clear
     }
     
     func setPieChart(dataPoints: [String], values: [Double]) {
@@ -85,11 +79,11 @@ class ViewController: UIViewController {
         }
         
         let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
-
+        
         let pieChartData = PieChartData()
         pieChartData.addDataSet(pieChartDataSet)
         
-        pieChart.data = pieChartData
+        pieChartView.data = pieChartData
         
         var colors: [UIColor] = []
         
@@ -103,7 +97,7 @@ class ViewController: UIViewController {
         }
         pieChartDataSet.colors = colors
         
-        pieChart.chartDescription?.text = "Pie Chart Demo"
+        pieChartView.chartDescription?.text = "Pie Chart Demo"
     }
     
 }
