@@ -8,24 +8,28 @@
 
 import UIKit
 import Charts
+import FSCalendar
 
 class DashBoardViewController: UIViewController {
     
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var lineChartView: LineChartView!
-    @IBOutlet weak var calendarView: UIView!
+    @IBOutlet weak var calendar: UIView!
     @IBOutlet weak var appointmentsView: UIView!
+    @IBOutlet weak var calendarHeader: UILabel!
+    @IBOutlet weak var calendarView: FSCalendar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 12.0, 2.0, 5.0, 14.0, 2.8, 4.2]
         
-        let pieLabels = ["Jan", "Feb", "Mar", "Apr"]
+        let pieLabels = ["Christmas", "Event", "Landscape"]
         let pieData = [20.0, 4.0, 6.0, 3.0]
         
-        pieChartView.centerText = "Sales"
+        pieChartView.centerText = "30.0"
         pieChartView.chartDescription?.position = CGPoint(x: pieChartView.frame.size.width/2, y: 5)
         pieChartView.chartDescription?.textAlign = .justified
         pieChartView.drawEntryLabelsEnabled = false
@@ -43,7 +47,10 @@ class DashBoardViewController: UIViewController {
         setPieChart(dataPoints: pieLabels, values: pieData)
         setLineChart(dataPoints: months, values: unitsSold)
         
-        
+        calendarView.clipsToBounds = true
+        calendarView.layer.borderWidth = 0.5
+        calendarView.layer.borderColor = UIColor.darkGray.cgColor
+        calendarView.appearance.headerDateFormat = "MMM yyyy"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,16 +69,19 @@ class DashBoardViewController: UIViewController {
         }
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "Units Sold")
+        lineChartDataSet.circleRadius = 2
+        lineChartDataSet.drawValuesEnabled = false
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         
-        lineChartView.chartDescription?.text = "Line Chart Demo"
+        lineChartView.chartDescription?.text = "12 Month Rolling Sales"
         lineChartView.gridBackgroundColor = .clear
     }
     
     func setPieChart(dataPoints: [String], values: [Double]) {
         
         var dataEntries: [PieChartDataEntry] = []
+        let colors: [UIColor] = [UIColor.green, UIColor.orange, UIColor.blue]
         
         for i in 0..<dataPoints.count {
             let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i])
@@ -79,25 +89,13 @@ class DashBoardViewController: UIViewController {
         }
         
         let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
+        pieChartDataSet.colors = colors
         
         let pieChartData = PieChartData()
         pieChartData.addDataSet(pieChartDataSet)
         
         pieChartView.data = pieChartData
-        
-        var colors: [UIColor] = []
-        
-        for _ in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
-        pieChartDataSet.colors = colors
-        
-        pieChartView.chartDescription?.text = "Pie Chart Demo"
+        pieChartView.chartDescription?.text = "Sales (YTD)"
     }
     
 }
