@@ -11,6 +11,7 @@ import UIKit
 class AppointmentsTableViewCell: UITableViewCell {
 
     // MARK: Outlets
+    
     @IBOutlet weak var leadCustName: UIButton!
     @IBOutlet weak var phone: UIButton!
     @IBOutlet weak var address: UIButton!

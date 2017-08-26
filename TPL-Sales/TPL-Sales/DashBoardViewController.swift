@@ -10,15 +10,28 @@ import UIKit
 import Charts
 import FSCalendar
 
-class DashBoardViewController: UIViewController {
+class DashBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: Outlets
     
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var calendar: UIView!
-    @IBOutlet weak var appointmentsView: UIView!
     @IBOutlet weak var calendarHeader: UILabel!
     @IBOutlet weak var calendarView: FSCalendar!
+    @IBOutlet weak var shortName: UILabel!
+    @IBOutlet weak var shortAddress: UILabel!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var birthday: UILabel!
+    @IBOutlet weak var age: UILabel!
+    @IBOutlet weak var allTimeSales: UILabel!
+    @IBOutlet weak var salesYTD: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var aboutMe: UITextView!
+    @IBOutlet weak var apoointments: UITableView!
+    
+    var isViewAppointments: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +64,9 @@ class DashBoardViewController: UIViewController {
         calendarView.layer.borderWidth = 0.5
         calendarView.layer.borderColor = UIColor.darkGray.cgColor
         calendarView.appearance.headerDateFormat = "MMM yyyy"
+        
+        profileImage.layer.cornerRadius = profileImage.frame.size.width/2
+        profileImage.clipsToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +74,51 @@ class DashBoardViewController: UIViewController {
         pieChartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
         lineChartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
     }
+    
+    // MARK: Table delegate functions
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "appointmentsTableViewHeader") as! AppointmentsHeaderTableViewCell
+        cell.add.addTarget(self, action: #selector(self.redirectToPersistView), for: .touchUpInside)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "appointmentsTableView") as! AppointmentsTableViewCell
+        if indexPath.row != 0 {
+            cell.topView.isHidden = true
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        isViewAppointments = true
+        redirectToPersistView()
+        isViewAppointments = false
+    }
+    
+    // MARK: Internal  functions
     
     func setLineChart(dataPoints: [String], values: [Double]) {
         
@@ -96,6 +157,24 @@ class DashBoardViewController: UIViewController {
         
         pieChartView.data = pieChartData
         pieChartView.chartDescription?.text = "Sales (YTD)"
+    }
+    
+    func redirectToPersistView()  {
+        
+        self.performSegue(withIdentifier: "viewAppointment", sender: self)
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "viewAppointment" {
+            if let destNC = segue.destination as? UINavigationController {
+                if let destVC = destNC.topViewController as? PersistAppointmentsViewController {
+                    destVC.isViewAppointments = isViewAppointments
+                }
+            }
+        }
     }
     
 }
