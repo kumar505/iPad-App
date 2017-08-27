@@ -29,9 +29,12 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var salesYTD: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var aboutMe: UITextView!
-    @IBOutlet weak var apoointments: UITableView!
+    @IBOutlet weak var apointments: UITableView!
     
     var isViewAppointments: Bool = false
+    var appointment = AppointmentDataModel()
+    var borderWidth: CGFloat = 1.5
+    var borderCornerRadius: CGFloat = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +64,29 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
         setLineChart(dataPoints: months, values: unitsSold)
         
         calendarView.clipsToBounds = true
-        calendarView.layer.borderWidth = 0.5
-        calendarView.layer.borderColor = UIColor.darkGray.cgColor
         calendarView.appearance.headerDateFormat = "MMM yyyy"
         
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         profileImage.clipsToBounds = true
         
         self.navigationController?.navigationBar.formatUI()
+        
+        profileView.layer.borderWidth = borderWidth
+        profileView.layer.borderColor = ColorConstants.borderLightGrayColor.cgColor
+        calendar.layer.borderWidth = borderWidth
+        calendar.layer.borderColor = ColorConstants.borderLightGrayColor.cgColor
+        pieChartView.layer.borderWidth = borderWidth
+        pieChartView.layer.borderColor = ColorConstants.borderLightGrayColor.cgColor
+        lineChartView.layer.borderWidth = borderWidth
+        lineChartView.layer.borderColor = ColorConstants.borderLightGrayColor.cgColor
+        apointments.layer.borderWidth = borderWidth
+        apointments.layer.borderColor = ColorConstants.borderLightGrayColor.cgColor
+        
+        appointment.addAppointment(leadName: "Karthik", phone: 1234567890, address: "ECIL, Hyderabad", appointmentType: "Christmas", start: formatDate(currentDate: Date.init()), end: formatDate(currentDate: Date.init().addingTimeInterval(3600.0)), confirm: false, workEstimate: "WE")
+        
+        appointment.addAppointment(leadName: "Dilip", phone: 1234567890, address: "ECIL, Hyderabad", appointmentType: "Christmas", start: formatDate(currentDate: Date.init()), end: formatDate(currentDate: Date.init().addingTimeInterval(3600.0)), confirm: true, workEstimate: "WE")
+        
+        self.apointments.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,7 +102,7 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return appointments.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -106,10 +124,29 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let appointment = appointments[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "appointmentsTableView") as! AppointmentsTableViewCell
         if indexPath.row != 0 {
+            cell.topView.backgroundColor = ColorConstants.borderLightGrayColor
             cell.topView.isHidden = true
         }
+        
+        cell.bottomView.isHidden = true
+        cell.leftView.isHidden = true
+        cell.rightView.isHidden = true
+        
+        cell.leadCustName.setTitle(appointment.leadName, for: .normal)
+        cell.phone.setTitle(appointment.phone?.stringValue, for: .normal)
+        cell.address.setTitle(appointment.address, for: .normal)
+        cell.appointmentType.text = appointment.appointmentType
+        cell.startEndTime.text = "\(String(describing: appointment.startTime!)) / \(String(describing: (appointment.endTime!)))"
+        if appointment.confirm! {
+            cell.confirm.setTitle("©", for: .normal)
+        } else {
+            cell.confirm.setTitle("Confirm", for: .normal)
+        }
+        cell.we.setTitle("WE", for: .normal)
         return cell
     }
     
@@ -118,6 +155,19 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
         isViewAppointments = true
         redirectToPersistView()
         isViewAppointments = false
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "viewAppointment" {
+            if let destNC = segue.destination as? UINavigationController {
+                if let destVC = destNC.topViewController as? PersistAppointmentsViewController {
+                    destVC.isViewAppointments = isViewAppointments
+                }
+            }
+        }
     }
     
     // MARK: Internal  functions
@@ -132,8 +182,10 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "Units Sold")
-        lineChartDataSet.circleRadius = 2
+        lineChartDataSet.circleRadius = 3
         lineChartDataSet.drawValuesEnabled = false
+        lineChartDataSet.circleColors = [UIColor.blue]
+        lineChartDataSet.colors = [UIColor.blue]
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         
@@ -166,17 +218,10 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.performSegue(withIdentifier: "viewAppointment", sender: self)
     }
     
-    // MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func formatDate(currentDate: Date) -> String {
         
-        if segue.identifier == "viewAppointment" {
-            if let destNC = segue.destination as? UINavigationController {
-                if let destVC = destNC.topViewController as? PersistAppointmentsViewController {
-                    destVC.isViewAppointments = isViewAppointments
-                }
-            }
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: currentDate)
     }
-    
 }

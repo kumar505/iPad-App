@@ -117,6 +117,7 @@
 		9ED827401F4B5A000081043F /* Avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8273F1F4B5A000081043F /* Avatar1.png */; };
 		9EDB88FD1F52C0EB00FEDB26 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDB88FC1F52C0EB00FEDB26 /* Extensions.swift */; };
 		9EDB88FF1F52C13D00FEDB26 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDB88FE1F52C13D00FEDB26 /* Constants.swift */; };
+		9EDB89011F52DECB00FEDB26 /* AppointmentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDB89001F52DECB00FEDB26 /* AppointmentDataModel.swift */; };
 		9EF2F8C81F4F40250063FFCD /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF2F8C71F4F40250063FFCD /* DashBoardViewController.swift */; };
 		9EFD9A2F1F5185010037DDC8 /* PersistAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFD9A2E1F5185010037DDC8 /* PersistAppointmentsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -257,6 +258,7 @@
 		9ED8273F1F4B5A000081043F /* Avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar1.png; sourceTree = "<group>"; };
 		9EDB88FC1F52C0EB00FEDB26 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9EDB88FE1F52C13D00FEDB26 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9EDB89001F52DECB00FEDB26 /* AppointmentDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentDataModel.swift; sourceTree = "<group>"; };
 		9EF2F8C71F4F40250063FFCD /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		9EFD9A2E1F5185010037DDC8 /* PersistAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B1FEE3639B1CE806D4195531 /* Pods_TPL_Sales.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPL_Sales.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +380,7 @@
 		9E68D78D1F47202100C9BDC2 /* TPL-Sales */ = {
 			isa = PBXGroup;
 			children = (
+				9EDB89021F52DED500FEDB26 /* Models */,
 				9E25F6BA1F51FECB006C6A2D /* Main */,
 				9E25F6B81F51FEAE006C6A2D /* Views */,
 				9E25F6B91F51FEBF006C6A2D /* Controllers */,
@@ -685,6 +688,14 @@
 				9ED8273F1F4B5A000081043F /* Avatar1.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		9EDB89021F52DED500FEDB26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9EDB89001F52DECB00FEDB26 /* AppointmentDataModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1096,6 +1107,7 @@
 				9E9C77261F509CF700A31D12 /* AppointmentsHeaderTableViewCell.swift in Sources */,
 				9E68D78F1F47202100C9BDC2 /* AppDelegate.swift in Sources */,
 				9EF2F8C81F4F40250063FFCD /* DashBoardViewController.swift in Sources */,
+				9EDB89011F52DECB00FEDB26 /* AppointmentDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var cancel: UIBarButtonItem!
     @IBOutlet weak var appointmentTitle: UIBarButtonItem!
@@ -17,9 +17,12 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var form: UITableView!
     
     var isViewAppointments: Bool?
+    var appointment: AppointmentDataModel?
     
     var labels = [["Appointment Type", "Title"],["Start", "End"]]
     var extraLabel = ["Lead/Customer Name", "Phone"]
+    var isAllDayChecked: Bool = false
+    var isConfirmChecked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,9 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
         }
         
         self.navigationController?.navigationBar.formatUI(barTintcolor: ColorConstants.lightBlueColor, tintColor: UIColor.darkGray)
+        
+        cancelBottom.layer.borderWidth = 1.0
+        cancelBottom.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     // MARK: TableView Delegate functions
@@ -46,6 +52,12 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        if indexPath.row == (labels.count + 1) {
+            return 210.0
+        }
+        if indexPath.row == labels.count {
+            return 50.0
+        }
         return 70.0
     }
     
@@ -68,7 +80,9 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
         } else if indexPath.row == labels.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideCheckBoxesLabels") as! FormCheckboxLabelTableViewCell
             cell.column1Label.text = "Is all day event"
+            cell.column1Button.addTarget(self, action: #selector(self.isAllDayEvent(sender:)), for: .touchUpInside)
             cell.column2Label.text = "Confirmed"
+            cell.column2Button.addTarget(self, action: #selector(self.isConfirm(sender:)), for: .touchUpInside)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "desc") as! FormDescTableViewCell
@@ -82,17 +96,44 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
         
     }
     
+    // MARK: Textfield Delegate functions
+    
+    
+    
     // MARK: Internal functions
     
     @IBAction func performCancel(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func performCancelBottom(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func performSave(_ sender: UIButton) {
+        appointments.append(appointment!)
+    }
+    
+    func isAllDayEvent(sender: UIButton) {
+        if !isAllDayChecked {
+            isAllDayChecked = true
+            sender.setImage(UIImage(named: "checkbox-active"), for: .normal)
+        } else {
+            isAllDayChecked = false
+            sender.setImage(UIImage(named: "checkbox-inactive"), for: .normal)
+        }
+    }
+    
+    func isConfirm(sender: UIButton) {
+        if !isConfirmChecked {
+            isConfirmChecked = true
+            sender.setImage(UIImage(named: "checkbox-active"), for: .normal)
+        } else {
+            isConfirmChecked = false
+            sender.setImage(UIImage(named: "checkbox-inactive"), for: .normal)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
