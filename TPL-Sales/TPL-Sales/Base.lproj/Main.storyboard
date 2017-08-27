@@ -486,6 +486,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="DASHBOARD" id="0Hv-GR-5aK">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="qRy-wh-dDR"/>
+                        <barButtonItem key="rightBarButtonItem" image="settings.png" id="jYY-we-tvo"/>
                     </navigationItem>
                     <connections>
                         <outlet property="aboutMe" destination="XX3-EY-vgf" id="dHA-eW-Xc3"/>
@@ -570,7 +571,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGF-F6-RaU">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGF-F6-RaU">
                                                             <rect key="frame" x="0.0" y="20.5" width="235" height="39.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -590,7 +591,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysF-98-0VM">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysF-98-0VM">
                                                             <rect key="frame" x="0.0" y="20.5" width="235" height="39.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -794,7 +795,6 @@
         <!--Navigation Controller-->
         <scene sceneID="dih-NP-aa0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eak-pH-rIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DKe-n2-tfS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F6G-Lg-l5Z">
@@ -806,6 +806,7 @@
                         <segue destination="PpS-NI-evf" kind="relationship" relationship="rootViewController" id="6ks-Ew-hZa"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eak-pH-rIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2235.9375" y="772.8515625"/>
         </scene>
@@ -816,5 +817,6 @@
         <image name="checkbox-inactive.png" width="20" height="20"/>
         <image name="menu.png" width="20" height="20"/>
         <image name="plus-add.png" width="20" height="20"/>
+        <image name="settings.png" width="20" height="20"/>
     </resources>
 </document>

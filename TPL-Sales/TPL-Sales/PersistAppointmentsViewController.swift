@@ -25,8 +25,13 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
         
         if isViewAppointments! {
+            self.appointmentTitle.title = "View Appointment"
             labels.insert(extraLabel, at: 0)
+        } else {
+            self.appointmentTitle.title = "Add Appointment"
         }
+        
+        self.navigationController?.navigationBar.formatUI(barTintcolor: ColorConstants.lightBlueColor, tintColor: UIColor.darkGray)
     }
     
     // MARK: TableView Delegate functions
@@ -40,6 +45,7 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 70.0
     }
     
@@ -49,6 +55,15 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideTextFieldLabels") as! FormSideTextFieldLabelTableViewCell
             cell.column1Label.text = labels[indexPath.row][0]
             cell.column2Label.text = labels[indexPath.row][1]
+            if labels[indexPath.row][0] == "Appointment Type" {
+                cell.column1Field.formatUI(imageName: "down-arrow", isLeftViewMode: false)
+            }
+            if labels[indexPath.row][0] == "Start" {
+                cell.column1Field.formatUI(imageName: "calender", isLeftViewMode: false)
+            }
+            if labels[indexPath.row][1] == "End" {
+                cell.column2Field.formatUI(imageName: "calender", isLeftViewMode: false)
+            }
             return cell
         } else if indexPath.row == labels.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sideCheckBoxesLabels") as! FormCheckboxLabelTableViewCell
@@ -58,6 +73,10 @@ class PersistAppointmentsViewController: UIViewController, UITableViewDelegate, 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "desc") as! FormDescTableViewCell
             cell.descLabel.text = "Description"
+            cell.descTextView.layer.borderWidth = 0.5
+            cell.descTextView.layer.cornerRadius = 5.0
+            cell.descTextView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.descTextView.text = ""
             return cell
         }
         

@@ -67,6 +67,8 @@ class DashBoardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         profileImage.clipsToBounds = true
+        
+        self.navigationController?.navigationBar.formatUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {

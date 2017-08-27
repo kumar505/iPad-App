@@ -115,6 +115,8 @@
 		9E9C77241F5094FB00A31D12 /* AppointmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9C77231F5094FB00A31D12 /* AppointmentsTableViewCell.swift */; };
 		9E9C77261F509CF700A31D12 /* AppointmentsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9C77251F509CF700A31D12 /* AppointmentsHeaderTableViewCell.swift */; };
 		9ED827401F4B5A000081043F /* Avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8273F1F4B5A000081043F /* Avatar1.png */; };
+		9EDB88FD1F52C0EB00FEDB26 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDB88FC1F52C0EB00FEDB26 /* Extensions.swift */; };
+		9EDB88FF1F52C13D00FEDB26 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDB88FE1F52C13D00FEDB26 /* Constants.swift */; };
 		9EF2F8C81F4F40250063FFCD /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF2F8C71F4F40250063FFCD /* DashBoardViewController.swift */; };
 		9EFD9A2F1F5185010037DDC8 /* PersistAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFD9A2E1F5185010037DDC8 /* PersistAppointmentsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -253,6 +255,8 @@
 		9E9C77231F5094FB00A31D12 /* AppointmentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewCell.swift; sourceTree = "<group>"; };
 		9E9C77251F509CF700A31D12 /* AppointmentsHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		9ED8273F1F4B5A000081043F /* Avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Avatar1.png; sourceTree = "<group>"; };
+		9EDB88FC1F52C0EB00FEDB26 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9EDB88FE1F52C13D00FEDB26 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9EF2F8C71F4F40250063FFCD /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		9EFD9A2E1F5185010037DDC8 /* PersistAppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B1FEE3639B1CE806D4195531 /* Pods_TPL_Sales.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPL_Sales.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +341,8 @@
 			isa = PBXGroup;
 			children = (
 				9E68D78E1F47202100C9BDC2 /* AppDelegate.swift */,
+				9EDB88FE1F52C13D00FEDB26 /* Constants.swift */,
+				9EDB88FC1F52C0EB00FEDB26 /* Extensions.swift */,
 				9E68D7921F47202100C9BDC2 /* Main.storyboard */,
 				9E68D7981F47202100C9BDC2 /* Assets.xcassets */,
 				9E68D79A1F47202100C9BDC2 /* LaunchScreen.storyboard */,
@@ -1080,10 +1086,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E9C77241F5094FB00A31D12 /* AppointmentsTableViewCell.swift in Sources */,
+				9EDB88FF1F52C13D00FEDB26 /* Constants.swift in Sources */,
 				9E35C7801F51BE02002FD25E /* FormSideTextFieldLabelTableViewCell.swift in Sources */,
 				9E35C7841F51BE24002FD25E /* FormDescTableViewCell.swift in Sources */,
 				9E68D7971F47202100C9BDC2 /* TPL_Sales.xcdatamodeld in Sources */,
 				9E35C7821F51BE17002FD25E /* FormCheckboxLabelTableViewCell.swift in Sources */,
+				9EDB88FD1F52C0EB00FEDB26 /* Extensions.swift in Sources */,
 				9EFD9A2F1F5185010037DDC8 /* PersistAppointmentsViewController.swift in Sources */,
 				9E9C77261F509CF700A31D12 /* AppointmentsHeaderTableViewCell.swift in Sources */,
 				9E68D78F1F47202100C9BDC2 /* AppDelegate.swift in Sources */,
